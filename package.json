@@ -1,0 +1,27 @@
+{
+  "name": "chainlink-dev",
+  "version": "1.0.0",
+  "description": "This project contains tooling for Chainlink local development.",
+  "main": "index.js",
+  "scripts": {
+    "truffle:migrate-ganache": "cd ./truffle/ && npx truffle migrate --network ganache && cd ..",
+    "start": "npm run truffle:migrate-ganache",
+    "test": "npm run truffle:test",
+    "truffle:test": "cd ./truffle/ && npx truffle test && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danforbes/chainlink-dev.git"
+  },
+  "author": "Dan Forbes <dan@danforbes.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danforbes/chainlink-dev/issues"
+  },
+  "homepage": "https://github.com/danforbes/chainlink-dev#readme",
+  "dependencies": {
+    "chainlink": "^0.7.8",
+    "link_token": "^1.0.6",
+    "truffle": "^5.0.43"
+  }
+}
