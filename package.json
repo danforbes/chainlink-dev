@@ -4,9 +4,13 @@
   "description": "This project contains tooling for Chainlink local development.",
   "main": "index.js",
   "scripts": {
-    "truffle:migrate-ganache": "cd ./truffle/ && npx truffle migrate --network ganache && cd ..",
-    "start": "npm run truffle:migrate-ganache",
+    "chainlink:logs": "docker logs chainlink-dev",
+    "chainlink:start": "./chainlink/start-cl.sh",
+    "rmx:chainlink": "./node_modules/remixd/bin/remixd -s ./node_modules/chainlink/contracts --remix-ide https://remix.ethereum.org",
+    "start": "npm run truffle:migrate-ganache && npm run chainlink:start",
+    "stop": "docker rm -f chainlink-dev",
     "test": "npm run truffle:test",
+    "truffle:migrate-ganache": "cd ./truffle/ && npx truffle migrate --network ganache ; cd ..",
     "truffle:test": "cd ./truffle/ && npx truffle test && cd .."
   },
   "repository": {
@@ -22,6 +26,7 @@
   "dependencies": {
     "chainlink": "^0.7.8",
     "link_token": "^1.0.6",
+    "remixd": "^0.1.8-alpha.14",
     "truffle": "^5.0.43"
   }
 }
