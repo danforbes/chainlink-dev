@@ -2,15 +2,21 @@
   "name": "chainlink-dev",
   "version": "1.0.0",
   "description": "This project contains tooling for Chainlink local development.",
-  "main": "index.js",
   "scripts": {
     "chainlink:logs": "docker logs chainlink-dev",
     "chainlink:start": "./chainlink/start-cl.sh",
-    "rmx:chainlink": "./node_modules/remixd/bin/remixd -s ./node_modules/chainlink/contracts --remix-ide https://remix.ethereum.org",
+
+    "remix:chainlink": "npx remixd -s ./node_modules/chainlink/contracts --remix-ide https://remix.ethereum.org",
+    "remix:truffle": "npx remixd -s ./truffle/contracts --remix-ide https://remix.ethereum.org",
+
     "start": "npm run truffle:migrate-ganache && npm run chainlink:start",
     "stop": "docker rm -f chainlink-dev",
     "test": "npm run truffle:test",
-    "truffle:migrate-ganache": "cd ./truffle/ && npx truffle migrate --network ganache ; cd ..",
+
+    "truffle:fund-client": "cd ./truffle && npx truffle exec ./scripts/fund-client.js --network ganache && cd ..",
+    "truffle:init-setup": "npm run truffle:fund-client && npm run truffle:prep-node",
+    "truffle:migrate-ganache": "cd ./truffle/ && npx truffle migrate --network ganache && cd ..",
+    "truffle:prep-node": "cd ./truffle && npx truffle exec ./scripts/prep-node.js --network ganache && cd ..",
     "truffle:test": "cd ./truffle/ && npx truffle test && cd .."
   },
   "repository": {
