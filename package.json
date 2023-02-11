@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/danforbes/chainlink-dev#readme",
   "dependencies": {
-    "chainlink": "^0.7.8",
+    "chainlink": "^0.8.2",
     "link_token": "^1.0.6",
     "remixd": "^0.1.8-alpha.14",
     "truffle": "^5.0.43"
